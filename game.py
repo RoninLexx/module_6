@@ -106,11 +106,11 @@ class Game(arcade.Window):
         self.ball.update()
         if arcade.check_for_collision(self.ball, self.br_bl1):
             self.ball.change_y = -self.ball.change_y
-            self.br_bl1.remove_from_sprite_lists()
+
         self.ball.update()
         if arcade.check_for_collision(self.ball, self.br_bl2):
             self.ball.change_y = -self.ball.change_y
-            self.br_bl2.remove_from_sprite_lists()
+
         self.ball.update()
 
 
