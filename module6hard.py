@@ -50,6 +50,7 @@ class Circle(Figure):
     def __init__(self, color, side):
         super().__init__(color, side)
         self.set_sides(side)
+        super().set_color(*color)
         self.__radius = side / 2
 
     def get_square(self):
@@ -63,6 +64,7 @@ class Triangle(Figure):
     def __init__(self, color, side_a, side_b, side_c):
         super().__init__(color, side_a, side_b, side_c)
         self.set_sides(side_a, side_b, side_c)
+        super().set_color(*color)
         self.side_a = side_a
         self.side_b = side_b
         self.side_c = side_c
