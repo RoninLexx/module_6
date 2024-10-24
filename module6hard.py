@@ -4,7 +4,7 @@ import math
 class Figure:
     sides_count = 0
 
-    def __init__(self, color, side):
+    def __init__(self, color, *sides):
         self.__sides = []
         self.__color = []
         self.filled = False
@@ -21,11 +21,9 @@ class Figure:
     def set_color(self, r, g, b):
         if self.__is_valid_color(r, g, b) is True:
             self.__color = [r, g, b]
-        else:
-            pass
 
     def __is_valid_sides(self, *sides):
-        if all(sides) is int and all(sides) > 0 and len(sides) == self.sides_count:
+        if all(isinstance(side, int) and side > 0 for side in sides) and len(sides) == self.sides_count:
             return True
         else:
             return False
@@ -52,7 +50,7 @@ class Circle(Figure):
     def __init__(self, color, side):
         super().__init__(color, side)
         self.set_sides(side)
-        self.__radius = side / 2 * math.pi
+        self.__radius = side / 2
 
     def get_square(self):
         c_square = math.pi * self.__radius ** 2
@@ -64,6 +62,7 @@ class Triangle(Figure):
 
     def __init__(self, color, side_a, side_b, side_c):
         super().__init__(color, side_a, side_b, side_c)
+        self.set_sides(side_a, side_b, side_c)
         self.side_a = side_a
         self.side_b = side_b
         self.side_c = side_c
@@ -82,14 +81,11 @@ class Cube(Figure):
 
     def __init__(self, color, side):
         super().__init__(color, side)
-        self.__sides = []
-        s_i = 0
-        while s_i < self.sides_count:
-            self.__sides.append(side)
-            s_i = s_i + 1
+        self.set_sides(*(side for i in range(self.sides_count)))
+        super().set_color(*color)
 
     def get_volume(self):
-        cube_sq = self.__sides * 3
+        cube_sq = self.get_sides()[0] ** 3
         return cube_sq
 
 
