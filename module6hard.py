@@ -51,11 +51,11 @@ class Circle(Figure):
 
     def __init__(self, color, side):
         super().__init__(color, side)
-        self.c_len = self.__len__()
-        self.__radius = self.c_len / 2 * math.pi
+        self.set_sides(side)
+        self.__radius = side / 2 * math.pi
 
     def get_square(self):
-        c_square = self.c_len ** 2 / 4 * math.pi
+        c_square = math.pi * self.__radius ** 2
         return c_square
 
 
