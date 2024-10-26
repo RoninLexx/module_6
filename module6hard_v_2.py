@@ -80,9 +80,9 @@ class Cube(Figure):
     def __init__(self, color, side):
         super().__init__(color, side)
         if not (isinstance(side, int) and side > 0):
-            raise ValueError("Длина ребра должна быть положительным целым числом.")  # вот это ещё могу понять, хотя тоже оно лишнее, проверка сторон еще в
+            print("Длина ребра должна быть положительным целым числом.")  # вот это ещё могу понять, хотя тоже оно лишнее, проверка сторон еще в
         if len(set(side for _ in range(self.sides_count))) != 1:
-            raise ValueError("Все рёбра куба должны быть равны.")
+            print("Все рёбра куба должны быть равны.")
         self.set_sides(*(side for _ in range(self.sides_count)))
 
     def get_volume(self):
